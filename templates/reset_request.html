@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Password Reset Request
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="mx-auto" style="width: 400px; padding: 32px 0px">
+    <div class="content-section">
+        <form class="" action="" method="post">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4" id="demo" style="text-align: left;"></legend>
+            </fieldset>
+
+            <body onload="myFunction()" style="margin:0;"></body>
+            <div id="loader"></div>
+            <div style="display:none;" id="myDiv" class="animate-bottom">
+                <div class="form-group">
+                    <label for="username" style="text-align: left;">Username:</label>
+                    <input type="text" class="form-control" name="username" id="username">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" value="Submit" class="btn btn-outline-info">Request</button>
+                </div>
+        </form>
+    </div>
+</div>
+</div>
+<p id="GFG_DOWN" style="display: block;margin-top: 1em; margin-bottom: 1em; margin-left: 0px; margin-right: 0px;">
+</p>
+<script>
+    var i = 0;
+    var txt = 'Reset Request';
+    var speed = 70;
+    (function typeWriter() {
+        if (i < txt.length) {
+            document.getElementById("demo").innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    })()
+</script>
+{% endblock %}

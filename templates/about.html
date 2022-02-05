@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+About Page
+{% endblock %}
+
+
+
+{% block content %}
+
+<br>
+<br>
+
+<body onload="myFunction()" style="margin:0;">
+
+    <div id="loader"></div>
+    <h1 style="text-align: center;" id="demo"></h1>
+    <br>
+    <div style="display:none;" id="myDiv" class="animate-bottom">
+        <p style="text-align: center; font-family: 'Trebuchet MS', sans-serif;">
+                Marvel-Authentication was a Graphical Password Authentication platform designed to overcome difficulties raised from the normal Text - based Password Authentication system. Register an account by entering the Username, email and select the grids for the Password. Then login to See the change in Marvel-Auth status. Remember the email registered with the password to receive the Notification mail on reset password page. Marvel-Auth was a Marvel theme based Graphical Authentication System and it can be of anytype.  HTML, CSS and Django was used to develop this Authentication System. Modifications to the Marvel-Auth was allowed&#10083;
+        </p>
+        
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <script>
+        var i = 0;
+        var txt = 'Marvel - Authentication';
+        var speed = 50;
+        (function typeWriter() {
+            if (i < txt.length) {
+                document.getElementById("demo").innerHTML += txt.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        })()
+    </script>
+    {% endblock %}

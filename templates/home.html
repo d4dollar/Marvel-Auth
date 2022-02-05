@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home Page
+{% endblock %}
+
+
+{% block content %}
+<br>
+<br>
+
+<body onload="myFunction()" style="margin:0;"></body>
+<div id="loader"></div>
+<h1 style="text-align: center;" id="demo"></h1>
+<div style="display:none;" id="myDiv" class="animate-bottom">
+    <h1 style="text-align:center;">Marvel-Auth status: {{request.user.is_authenticated}}&#10083;</h1>
+    <br>
+    <p style="text-align:center;">
+        Hey, Welcome to the Marvel-Authentication platform. <br>Depending on your Marvel-Auth status you will see the
+        login or logout menu on the top.
+    </p>
+</div>
+</body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<script>
+    var i = 0;
+    var txt = 'Welcome';
+    var speed = 140;
+    (function typeWriter() {
+        if (i < txt.length) {
+            document.getElementById("demo").innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    })()
+</script>
+{% endblock %}

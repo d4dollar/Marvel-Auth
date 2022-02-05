@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login Page
+{% endblock %}
+
+
+{% block content %}
+<div class="mx-auto">
+    <div class="content-section">
+        <form class="" action="" method="post" id="post-form">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4" id="demo" style="text-align: left;"></legend>
+            </fieldset>
+
+            <body onload="myFunction()" style="margin:0;"></body>
+            <div id="loader"></div>
+            <div style="display:none;" id="myDiv" class="animate-bottom">
+                <div class="row">
+                    <div class="col" style="padding: 32px 0px 0px 92px;max-width:400px; float: left;">
+                        <div class="form-group">
+                            <label for="username" style="text-align: left;">Username:</label>
+                            <input type="text" class="form-control" id="username">
+                        </div>
+                        <div>
+                            <br>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-outline-info">Sign In</button>
+                            </div>
+                            <hr>
+                            <div class="border-top pt-3">
+                                <small class="text-muted">
+                                    Forgot password? <a href="{% url 'reset' %}" class="ml-2">Click here</a>
+                                </small>
+                                <br>
+
+                                <small class="text-muted">
+                                    Create new account? <a href="{% url 'register' %}" class="ml-2">Sign Up</a>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col" style="padding-right: 82px;">
+                        <div id="basic">
+                            <br>
+                            {% include 'pwd.html' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+<script>
+    var i = 0;
+    var txt = 'Login';
+    var speed = 140;
+    (function typeWriter() {
+        if (i < txt.length) {
+            document.getElementById("demo").innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    })()
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<script>
+    var gpwd_set = new Set();
+
+    function onSelect(r, c) {
+        var res = r.toString() + c.toString();
+        if (gpwd_set.has(res)) {
+            console.log('true');
+            gpwd_set.delete(res);
+            document.getElementById(res).style.border = null;
+        } else {
+            gpwd_set.add(res);
+            document.getElementById(res).style.border = "";
+        }
+
+        console.log(gpwd_set);
+    }
+
+    function post(path, params, method = 'post') {
+
+        // The rest of this code assumes you are not using a library.
+        // It can be made less wordy if you use one.
+        const form = document.getElementById('post-form');
+        form.method = method;
+        form.action = path;
+
+        for (const key in params) {
+            if (params.hasOwnProperty(key)) {
+                const hiddenField = document.createElement('input');
+                hiddenField.type = 'hidden';
+                hiddenField.name = key;
+                hiddenField.value = params[key];
+
+                form.appendChild(hiddenField);
+            }
+        }
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+
+    // Submit post on submit
+    var form = document.getElementById('post-form');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        console.log("form submitted!");
+        post('', {
+            username: document.getElementById('username').value,
+            password: Array.from(gpwd_set),
+        })
+    });
+</script>
+{% endblock %}
